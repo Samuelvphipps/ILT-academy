@@ -17,18 +17,19 @@ if (process.env.DATABASE_URL) {
             rejectUnauthorized: false
         }
     });
-} else {
-  config = {
-    host: 'localhost', // Server hosting the postgres database
-    port: 5432, // env var: PGPORT
-    database: 'ilt_academy', // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
-    max: 10, // max number of clients in the pool
-    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
-  };
+}
+// When we're running this app on our own computer
+// we'll connect to the postgres database that is 
+// also running on our computer (localhost)
+else {
+    pool = new pg.Pool({
+        host: 'localhost',
+        port: 5432,
+        database: 'ilt_academy', 
+    });
 }
 
-// this creates the pool that will be shared by all other modules
-const pool = new pg.Pool(config);
+module.exports = pool;
 
 // the pool with emit an error on behalf of any idle clients
 // it contains if a backend error or network partition happens
