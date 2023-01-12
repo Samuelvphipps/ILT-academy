@@ -101,13 +101,13 @@ function UserDashboard(){
                     </Box> */}
                 <Box sx={{textAlign: 'left', mt:6}}>
                     <SeriesStudent />
-                    <Typography variant='h2'>My Links</Typography>
+                    <Typography variant='h2'>My Links (<i>disabled for demo</i>)</Typography>
                     <Button 
                     sx={{ minHeight: 100, minWidth:350, mt: 2, }}
                     variant='contained' 
                     color='btnLight'
                     onClick={()=> {
-                        window.location.href = "https://gather.town/app/QUkwAkENtpBq8fvW/ILTAcademy"
+                        // window.location.href = "https://gather.town/app/QUkwAkENtpBq8fvW/ILTAcademy"
                     }}>                
                         <Typography
                         color='tertiary.main'
@@ -119,7 +119,7 @@ function UserDashboard(){
                     variant='contained' 
                     color='btnLight'
                     onClick={()=> {
-                        window.location.href = "https://app.mural.co/invitation/mural/iltstudios1127/1643835923197?sender=uad537750285006409c4e5090&key=41cede5b-6c1a-4e08-bafe-7f708491dcc2"
+                        // window.location.href = "https://app.mural.co/invitation/mural/iltstudios1127/1643835923197?sender=uad537750285006409c4e5090&key=41cede5b-6c1a-4e08-bafe-7f708491dcc2"
                     }}>
                         <Typography
                         color='tertiary.main'
@@ -131,7 +131,7 @@ function UserDashboard(){
                     variant='contained' 
                     color='btnLight'
                     onClick={()=> {
-                        window.location.href = "https://iltacademy-founders.slack.com/"
+                        // window.location.href = "https://iltacademy-founders.slack.com/"
                     }}>
                         <Typography
                         color='tertiary.main'
