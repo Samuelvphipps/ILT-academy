@@ -47,7 +47,7 @@ function Modules() {
     //modal controls, opens and handles close
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
-    // console.log('🍏 params.id is THIS ', params.seriesId) 
+    // //console.log('🍏 params.id is THIS ', params.seriesId) 
 
     //Get current series
     let currentSeries;
@@ -114,7 +114,7 @@ function Modules() {
 
     const createModule = (evt) => {
         evt.preventDefault();
-        // console.log('in createModule');
+        // //console.log('in createModule');
         //dispatch to SAGA for axios to server/db
         dispatch({
             type: 'CREATE_MODULE',
@@ -130,7 +130,7 @@ function Modules() {
     }
 
     const deleteModule = (moduleId) =>{
-        // console.log('in delete module with id of:', moduleId);
+        // //console.log('in delete module with id of:', moduleId);
         //confirm deletion
         Swal.fire({
             title: 'Are you sure you want to delete this module?',
@@ -258,7 +258,7 @@ function Modules() {
                                         {/* display all postclass assignments here */}
                                         {postClass.map((assignment, i)  => {
                                             if (assignment.moduleId == module.id) {
-                                                // console.log('TRUE')
+                                                // //console.log('TRUE')
                                                 let pre = ''
                                                 assignment.postClass === 'false' ? pre = 'Pre-Class' : pre = 'Post-Class'
                                                 return (

@@ -50,7 +50,7 @@ function Hacker() {
     }, []);
 
     function valuetext(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         return `${value}`;
     }
     const populateName = () => {
@@ -63,44 +63,44 @@ function Hacker() {
         with my new app "The Urge to Wander"`)
     }
     function setHipsterInterest(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHipsterI(value)
         return `${value}`;
     }
 
     function setHackerInterest(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHackerI(value)
         return `${value}`;
     }
 
     function setHustlerInterest(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHustlerI(value)
         return `${value}`;
     }
 
     function setHipsterSkill(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHipsterS(value)
         return `${value}`;
     }
 
     function setHackerSkill(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHackerS(value)
         return `${value}`;
     }
 
     function setHustlerSkill(value) {
-        // console.log('value', value)
+        // //console.log('value', value)
         setHustlerS(value)
         return `${value}`;
     }
 
     const submit = (evt) => {
         evt.preventDefault();
-        console.log('in submit assignment');
+        //console.log('in submit assignment');
         //ensure there is content in the WYSIWYG
         if (firstName === '' || lastName === '') {
             alert('Must Enter Name');
@@ -109,7 +109,7 @@ function Hacker() {
 
         const id = user.id
 
-        console.log('firstname', firstName, 'lastname', lastName)
+        //console.log('firstname', firstName, 'lastname', lastName)
 
         //dispatch to the SAGA for serverpost route
         dispatch({

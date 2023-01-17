@@ -12,7 +12,7 @@ const {
  * GET route template
  */
 router.get('/', rejectUnauthenticated, async (req, res) => {
-//   console.log('in get Announcements');
+//   //console.log('in get Announcements');
 //query text
 const sqlText = `
     SELECT * FROM "announcements"
@@ -25,7 +25,7 @@ try {
 
     res.send(debRes.rows);
 } catch (err) {
-    console.log('in announcements GET error:', err.message);
+    //console.log('in announcements GET error:', err.message);
     res.sendStatus(500)
 };
 
@@ -35,7 +35,7 @@ try {
  * POST route template
  */
 router.post('/', rejectUnauthenticated, async (req, res) => {
-    console.log('in announcement POST route', req.body);
+    //console.log('in announcement POST route', req.body);
 
     try{
         const sqlText=`

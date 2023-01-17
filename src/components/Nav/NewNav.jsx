@@ -33,7 +33,7 @@ function Nav() {
     const orientationList = useSelector((store) => store.orientation.orientationReducer);
     const dispatch = useDispatch();
     const history = useHistory();
-    // console.log('publishedSeries', publishedSeries, 'cohortId:', user);
+    // //console.log('publishedSeries', publishedSeries, 'cohortId:', user);
 
     //series     //app bar
     const [seriesOpen, setSeriesOpen] = useState(false);

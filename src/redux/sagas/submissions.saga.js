@@ -10,7 +10,7 @@ import FormData from 'form-data';
 // {singleSubmission.video ? singleSubmission.video : ''}
 //createSubmission
 function* createSubmission(action){
-    console.log('in createSubmission SAGA with payload:', action.payload)
+    //console.log('in createSubmission SAGA with payload:', action.payload)
     let data = action.payload;
     //create form data to post to server
     try{
@@ -37,7 +37,7 @@ function* createSubmission(action){
 
 
     } catch (err) {
-        console.error('in createSubmission SAGA error:', err);
+        //console.error('in createSubmission SAGA error:', err);
     }
 
 
@@ -46,7 +46,7 @@ function* createSubmission(action){
 function* fetchAssignmentSubmissions(action){
    let cohortId = action.payload.cohortId;
    let assignmentId = action.payload.assignmentId;
-    console.log('📰 in FETCH assignment submissions at submissions.saga', cohortId, assignmentId)
+    //console.log('📰 in FETCH assignment submissions at submissions.saga', cohortId, assignmentId)
     try{
         let submissions = yield axios.get(`api/submissions/${cohortId}/${assignmentId}`) //GET submissions for assignment by cohort
         yield put({
@@ -54,31 +54,31 @@ function* fetchAssignmentSubmissions(action){
             payload: submissions.data
         })
     } catch (err){
-        console.error('error in submissions.saga in fetchAssignmentSubmissions', err);
+        //console.error('error in submissions.saga in fetchAssignmentSubmissions', err);
     }
 }
 
 function* fetchUserSubmissions(action){
-    // console.log('in fetchusersubmissions saga:', action.payload);
+    // //console.log('in fetchusersubmissions saga:', action.payload);
     try {
         //get user's submissions from the database
         let response = yield axios.get(`/api/submissions/user`)
-        // console.log('userSubmissions response =', response.data);
+        // //console.log('userSubmissions response =', response.data);
         yield put({
             type: 'SET_USER_SUBMISSIONS',
             payload: response.data
         })
     } catch (err){
-        console.error('in fetchUserSubmissions saga error', err);
+        //console.error('in fetchUserSubmissions saga error', err);
     }
 }
     //get a singleSubmission to use in redux as the editable submission
 function* fetchSingleSubmission(action){
-    // console.log('in fetchSingleSubmission');
+    // //console.log('in fetchSingleSubmission');
     try {
         //get user's submissions from the database
         let response = yield axios.get(`/api/submissions/user/assignment/${action.payload}`);
-        // console.log('response from server is:', response.data);
+        // //console.log('response from server is:', response.data);
 
         //update redux selectedsubmission
         yield put ({
@@ -87,7 +87,7 @@ function* fetchSingleSubmission(action){
         });
 
     } catch (err){
-        console.error('in fetchSingleSubmission saga error', err);
+        //console.error('in fetchSingleSubmission saga error', err);
     }
 
 

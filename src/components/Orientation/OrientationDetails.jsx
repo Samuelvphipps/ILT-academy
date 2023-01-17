@@ -26,14 +26,14 @@ function OrientationDetails({ step }) {
 
     //get selected assignment for the render
     const assignment = useSelector(store => store.orientation.orientationReducer);
-    // console.log('assignment is:', assignment);
+    // //console.log('assignment is:', assignment);
 
     //usestate to keep files
     const [pdfSubmission, setPdfSubmission] = useState(null);
     const [videoSubmission, setVideoSubmission] = useState(null);
     const [textSubmission, setTextSubmission] = useState(null);
 
-    console.log('step', step)
+    //console.log('step', step)
 
     //useEffect for getting assignment by id
     // useEffect(() => {
@@ -43,9 +43,9 @@ function OrientationDetails({ step }) {
     //handle file submission
     const handleSubmission = (evt) => {
         evt.preventDefault();
-        // console.log('pdf file', pdfSubmission);
-        // console.log('video file', videoSubmission);
-        // console.log('text file', textSubmission);
+        // //console.log('pdf file', pdfSubmission);
+        // //console.log('video file', videoSubmission);
+        // //console.log('text file', textSubmission);
         //dispatch to SAGA for post to server
         dispatch({
             type: 'CREATE_SUBMISSION',
@@ -92,7 +92,7 @@ function OrientationDetails({ step }) {
     // var stringToHTML = function (str) {
     //     var dom = document.createElement('div');
     //     dom.innerHTML = str;
-    //     console.log('why is this so complicated', dom)
+    //     //console.log('why is this so complicated', dom)
     //     return dom;
     // };
 

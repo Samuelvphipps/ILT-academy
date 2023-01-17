@@ -3,24 +3,24 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchStudent(action){
     let username = action.payload;
-    // console.log('🍊 fetchStudent ', username);
+    // //console.log('🍊 fetchStudent ', username);
     try{
         let student = yield axios.get(`api/user/${username}`)
-        // console.log('🧊student in student.saga is ', student)
+        // //console.log('🧊student in student.saga is ', student)
         yield put({
             type: 'SET_STUDENT', 
             payload: student.data
         })
 
     } catch(err){
-        console.error('error in student.saga fetch student', err);
+        //console.error('error in student.saga fetch student', err);
     }
 
 }
 
 function* fetchStudentAssignments(action){
     let username = action.payload;
-    // console.log('👻fetch student assignments', username);
+    // //console.log('👻fetch student assignments', username);
     try{
         let assignments = yield axios.get(`api/assignments/username/${username}`)
         yield put({
@@ -29,7 +29,7 @@ function* fetchStudentAssignments(action){
         })
 
     } catch(err) {
-        console.error('error in student.saga fetch assignments', err);
+        //console.error('error in student.saga fetch assignments', err);
     }
 
 }

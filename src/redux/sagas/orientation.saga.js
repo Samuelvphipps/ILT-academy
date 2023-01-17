@@ -5,30 +5,30 @@ import FormData from 'form-data';
 function* fetchOrientation() {
 
     try {
-        console.log('IN FETCH ORIENTATION')
+        //console.log('IN FETCH ORIENTATION')
         let orientation = yield axios.get(`api/orientation`) //get orientation from database
-        console.log('feature GET response', orientation)
+        //console.log('feature GET response', orientation)
 
         yield put({
             type: 'SET_ORIENTATION', //dispatch to orientation.reducer
             payload: orientation.data
         })
     } catch {
-        console.log('error in orientationSaga')
+        //console.log('error in orientationSaga')
     }
 }
 
 function* createOrientation(action) {
-    // console.log('in createAssignment SAGA with payload of:', action.payload);
+    // //console.log('in createAssignment SAGA with payload of:', action.payload);
 
     //create payload object
     let data = action.payload;
-    console.log('THIS IS DATA', data)
+    //console.log('THIS IS DATA', data)
     //new formdata for payload to multer and router
     let formData = new FormData();
 
-    // console.log('video', data.assignmentVideo);
-    // console.log('video[0]', data.assignmentVideo);
+    // //console.log('video', data.assignmentVideo);
+    // //console.log('video[0]', data.assignmentVideo);
     //req.file
     formData.append('video', data.video);
 
@@ -53,17 +53,17 @@ function* createOrientation(action) {
         //get posts redux and rerender after store is updated
     } catch (err) {
         //error route tested
-        console.error('in createAssignment SAGA error', err);
+        //console.error('in createAssignment SAGA error', err);
     }
 }
 
 function* fetchEditOrientation(action) {
-    console.log('in fetchEditOrientation saga with payload of:', action.payload);
+    //console.log('in fetchEditOrientation saga with payload of:', action.payload);
     try {
         //get selectedAssignment from server
         const editOrientation = yield axios.get(`/api/orientation/${action.payload}`);
 
-        console.log('in fetchEditOrientation with response of:', editOrientation.data);
+        //console.log('in fetchEditOrientation with response of:', editOrientation.data);
 
         //send results to redux store
         yield put({
@@ -72,12 +72,12 @@ function* fetchEditOrientation(action) {
         });
     } catch (err) {
         //error route tested
-        console.error('in fetchEditOrientation error', err);
+        //console.error('in fetchEditOrientation error', err);
     }
 }
 
 function* updateOrientation(action) {
-    console.log('CURRENT STEP', action.payload);
+    //console.log('CURRENT STEP', action.payload);
     let data = action.payload;
     //new formdata
     let formData = new FormData;
@@ -106,12 +106,12 @@ function* updateOrientation(action) {
         });
 
     } catch (err) {
-        console.error('in editOrientation SAGA put route:', err);
+        //console.error('in editOrientation SAGA put route:', err);
     }
 }
 
 function* deleteOrientation(action) {
-    // console.log('in deleteAssignment SAGA with payload of:', action.payload);
+    // //console.log('in deleteAssignment SAGA with payload of:', action.payload);
 
     try {
         //send id via axios delete request
@@ -121,7 +121,7 @@ function* deleteOrientation(action) {
             type: 'FETCH_ORIENTATION',
         })
     } catch (err) {
-        console.error('in deleteAssignment SAGA with error:', err);
+        //console.error('in deleteAssignment SAGA with error:', err);
     }
 
 }

@@ -29,7 +29,7 @@ function OrientationStep() {
     const [completed, setCompleted] = useState({});
 
 
-    console.log(orientation)
+    //console.log(orientation)
     useEffect(() => {
         window.scrollTo(0, 0);
         dispatch({
@@ -51,7 +51,7 @@ function OrientationStep() {
 
 
     const totalSteps = () => {
-        // console.log('orientation length', orientation.length)
+        // //console.log('orientation length', orientation.length)
         if (orientation.length > 0) {
             return orientation.length;
         }
@@ -59,7 +59,7 @@ function OrientationStep() {
     };
 
     const completedSteps = () => {
-        // console.log('object', Object.keys(completed).length)
+        // //console.log('object', Object.keys(completed).length)
         // return Object.keys(completed).length;
         return user.oriented
     };

@@ -34,7 +34,7 @@ function CreateAnnouncement(){
 
     const submitAnnouncement = (evt) => {
         evt.preventDefault();
-        // console.log('in submitAnnouncement fn');
+        // //console.log('in submitAnnouncement fn');
         //send announcemento SAGA for axios request
             dispatch({
                 type: 'CREATE_ANNOUNCEMENT',

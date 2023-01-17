@@ -46,7 +46,7 @@ function StudentModules (){
 
      //Get current series
      let currentSeries;
-     console.log('🍍 params is ', params.id)
+     //console.log('🍍 params is ', params.id)
 
      series.map(series =>{
          if(series.seriesId == params.id){
@@ -54,7 +54,7 @@ function StudentModules (){
          }
      })
 
-    // console.log('submissions', submissions);
+    // //console.log('submissions', submissions);
 
     //set up preclass post class arrays to seperately render in module
     const preClass = assignments.filter(assignment => assignment.postClass === false);
@@ -203,7 +203,7 @@ function StudentModules (){
                                         {/* display all postclass assignments here */}
                                         {postClass.map((assignment, i)  => {
                                             if (assignment.moduleId == publishedModule.moduleId) {
-                                                // console.log('TRUE')
+                                                // //console.log('TRUE')
                                                 let pre = ''
                                                 assignment.postClass === 'false' ? pre = 'Pre-Class' : pre = 'Post-Class'
                                                 return (

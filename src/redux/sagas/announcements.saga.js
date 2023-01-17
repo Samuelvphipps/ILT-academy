@@ -5,23 +5,23 @@ import { put, takeEvery } from 'redux-saga/effects';
 // /api/announcements
 
 function* fetchAnnouncements(){
-    console.log('in fetchAnnouncements SAGA');
+    //console.log('in fetchAnnouncements SAGA');
     try {
         const response = yield axios.get('/api/announcements');
-        // console.log('announcements response.data', response.data);
+        // //console.log('announcements response.data', response.data);
         //send to redux
         yield put ({
             type: 'SET_ANNOUNCEMENTS',
             payload: response.data
         });
     } catch (err){
-        console.error('in fetchAnnouncements SAGA error:', err);
+        //console.error('in fetchAnnouncements SAGA error:', err);
 
     }
 }
 
 function* createAnnouncement(action){
-    // console.log('in createAnnouncement SAGA,', action.payload);
+    // //console.log('in createAnnouncement SAGA,', action.payload);
     try{
         //axios to endpoint for DB post
         yield axios.post('/api/announcements', action.payload);
@@ -32,7 +32,7 @@ function* createAnnouncement(action){
         });
 
     } catch (err){
-        console.error('in createAnnouncement SAGA error', err.message);
+        //console.error('in createAnnouncement SAGA error', err.message);
     }
 }
 

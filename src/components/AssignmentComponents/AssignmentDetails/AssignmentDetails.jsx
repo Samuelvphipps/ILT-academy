@@ -67,9 +67,9 @@ function AssignmentDetails() {
     //handle file submission
     const handleSubmission = (evt) => {
         evt.preventDefault();
-        // console.log('pdf file', pdfSubmission);
-        // console.log('video file', videoSubmission);
-        // console.log('text file', textSubmission);
+        // //console.log('pdf file', pdfSubmission);
+        // //console.log('video file', videoSubmission);
+        // //console.log('text file', textSubmission);
         //dispatch to SAGA for post to server
 
         dispatch({
@@ -135,7 +135,7 @@ function AssignmentDetails() {
     }
 
     const editLesson = () => {
-        // console.log('IN EDITLESSON FN');
+        // //console.log('IN EDITLESSON FN');
         //go to the edit url
         history.push(`/admin/assignment/edit/${params.id}`);
     }

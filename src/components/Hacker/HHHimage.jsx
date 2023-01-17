@@ -63,7 +63,7 @@ function HHHimage({}) {
                         : hacker === hustler && hacker > hipster ? setHHH(5)
                             : hustler === hipster && hustler > hacker ? setHHH(6) : setHHH(7)
                             
-        console.log(imageHHH)
+        //console.log(imageHHH)
         
     }
 
@@ -80,7 +80,7 @@ function HHHimage({}) {
           
         pickH();
 
-        console.log('student', student)
+        //console.log('student', student)
 
     }, [hipster, hacker, hustler]);
 

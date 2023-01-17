@@ -26,7 +26,7 @@ router.get('/:username', rejectUnauthenticated, async (req, res) => {
         let dbResult = await pool.query(sqlText,sqlParams)
         res.send(dbResult.rows[0]);
     } catch(err) {
-        console.error('user.router GET by username error ', err.message);
+        //console.error('user.router GET by username error ', err.message);
         res.sendStatus(500);
     }
    
@@ -40,7 +40,7 @@ router.post('/register', async (req, res, next) => {
     const password = encryptLib.encryptPassword(req.body.password);
     //assign accessCode to variable
     const accessCode = req.body.accessCode
-    //   console.log('req.body', req.body);
+    //   //console.log('req.body', req.body);
     const accessSql = `
     SELECT "cohorts"."id" as "cohortId", 
 	"cohorts"."accessCode" as "cohortAccessCode",
@@ -49,7 +49,7 @@ router.post('/register', async (req, res, next) => {
     try{
         //get all access codes and assign to accessInfo
         let accessInfo = await pool.query(accessSql);
-        // console.log('accessInfo', accessInfo.rows);
+        // //console.log('accessInfo', accessInfo.rows);
         let accessLvl;
         let cohortId;
         let queryText;
@@ -92,13 +92,13 @@ router.post('/register', async (req, res, next) => {
         .query(queryText, queryParams)
         .then(() => res.sendStatus(201))
         .catch((err) => {
-          console.log('User registration failed: ', err);
+          //console.log('User registration failed: ', err);
           res.sendStatus(500);
         });
 
     }
     catch{
-        console.error('POST /register', err);
+        //console.error('POST /register', err);
         res.sendStatus(500);
     }
 });

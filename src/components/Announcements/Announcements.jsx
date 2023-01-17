@@ -20,7 +20,7 @@ import {
 
 
 function Announcements() {
-    // console.log('in announcements');
+    // //console.log('in announcements');
 
     //state
     const user = useSelector((store) => store.user);

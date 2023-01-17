@@ -44,7 +44,7 @@ function CohortModules() {
             currentSeries = series.seriesName;
         }
     })
-    // console.log('ASSIGNMENTS FOR THIS SERIES ', assignments);
+    // //console.log('ASSIGNMENTS FOR THIS SERIES ', assignments);
 
     //create new variable for modules assigned to this cohort
 
@@ -86,7 +86,7 @@ function CohortModules() {
     let arrayToCheck = [];
     cohortModules.map(publishedModule => {
         arrayToCheck.push(publishedModule.moduleId)
-        console.log('array to check is ', arrayToCheck)
+        //console.log('array to check is ', arrayToCheck)
     })
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -114,7 +114,7 @@ function CohortModules() {
     };
 
     function publishModule(moduleId) {
-        // console.log(`🍭 publish module ${moduleId} for cohort ${params.cohortId}`)
+        // //console.log(`🍭 publish module ${moduleId} for cohort ${params.cohortId}`)
         dispatch({
             type: 'PUBLISH_MODULE',
             payload: {
@@ -218,7 +218,7 @@ function CohortModules() {
                                         {/* display all postclass assignments here */}
                                         {postClass.map((assignment, i)  => {
                                             if (assignment.moduleId == publishedModule.moduleId) {
-                                                // console.log('TRUE')
+                                                // //console.log('TRUE')
                                                 let pre = ''
                                                 assignment.postClass === 'false' ? pre = 'Pre-Class' : pre = 'Post-Class'
                                                 return (

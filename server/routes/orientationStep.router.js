@@ -8,7 +8,7 @@ const {
   
 
 router.put('/', rejectUnauthenticated, async (req, res) => {
-    console.log('req.body!', req.body);
+    //console.log('req.body!', req.body);
 
     try{
         const sqlText = `UPDATE "user" 
@@ -22,17 +22,17 @@ router.put('/', rejectUnauthenticated, async (req, res) => {
         res.sendStatus(200);
 
     } catch(err) {
-        console.error('series.router GET error', err.message);
+        //console.error('series.router GET error', err.message);
         res.sendStatus(500);
     }
 })
 
 router.get('/:id', rejectUnauthenticated, async (req, res) => {
-    console.log('req.body!', req.params.id);
+    //console.log('req.body!', req.params.id);
 
     const id = parseInt(req.params.id);
 
-    console.log('req.body!', id);
+    //console.log('req.body!', id);
 
     try{
         const sqlText = `SELECT * FROM "user" 
@@ -45,7 +45,7 @@ router.get('/:id', rejectUnauthenticated, async (req, res) => {
         res.send(dbResult.rows[0]);
 
     } catch(err) {
-        console.error('series.router GET error', err.message);
+        //console.error('series.router GET error', err.message);
         res.sendStatus(500);
     }
 })

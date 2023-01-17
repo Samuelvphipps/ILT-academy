@@ -31,11 +31,11 @@ const uploadImage=(file)=>{
 
     return new Promise((resolve, reject) =>{
         s3.upload(params, function (err, data) {
-        console.log(data)
+        //console.log(data)
         if (err) {
             throw err
         }
-        // console.log(`File uploaded successfully. 
+        // //console.log(`File uploaded successfully. 
         //                 ${data.Location}`);
         resolve(data.Location);
     })});

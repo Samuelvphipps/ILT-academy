@@ -52,19 +52,19 @@ router.get('/', rejectUnauthenticated, rejectNotAdmin, async (req, res) => {
       res.send(dbResult.rows);
 
   } catch(err) {
-      console.error('assignments.router GET error', err.message);
+      //console.error('assignments.router GET error', err.message);
       res.sendStatus(500);
   }
 })
 
 //ONLY admin and students who are assigned assignment can see this
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    // console.log('in GET assignment by ID route with payload of:', req.params.id);
+    // //console.log('in GET assignment by ID route with payload of:', req.params.id);
     let sqlText;
     let sqlParams;
     //create sqlText for db query
     if(req.user.cohortId !== null){
-        console.log('🐍student access')
+        //console.log('🐍student access')
         sqlText =`
         SELECT "assignments".id, "assignments"."name", "assignments"."seriesId", "assignments"."content","assignments"."createdDate", "assignments".feedback, "assignments".media, "assignments".file, "assignments"."textField", "assignments".video, "assignments"."postClass" FROM "assignments"
         JOIN "series" ON "assignments"."seriesId" = "series".id
@@ -78,7 +78,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
         sqlParams = [req.params.id, req.user.cohortId];
     } else if(req.user.cohortId == null) {
-        console.log('🦧admin access')
+        //console.log('🦧admin access')
         sqlText =`
         SELECT * FROM "assignments"
             WHERE "assignments".id = $1
@@ -88,15 +88,15 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         sqlParams = [req.params.id];
     }
     
-    // console.log('TESTING PARAMS in get assignments by ID', sqlText, sqlParams);
+    // //console.log('TESTING PARAMS in get assignments by ID', sqlText, sqlParams);
     //query DB
     pool.query(sqlText, sqlParams)
         .then(dbRes => {
-            console.log('dbRes.rows', dbRes.rows[0]);
+            //console.log('dbRes.rows', dbRes.rows[0]);
             res.send(dbRes.rows[0]);
         })
         .catch(err => {
-            console.error('in GET assignment by ID error:', err);
+            //console.error('in GET assignment by ID error:', err);
             res.sendStatus(500);
         })
 
@@ -106,7 +106,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 router.post('/imagefield',  rejectUnauthenticated, upload.single('image'), async (req,res) => {
 
-// console.log('in /imagefield', req.file);
+// //console.log('in /imagefield', req.file);
 //ensure that this route is only available for admin users
 if (req.user.accessLevel === 2){
         //call s3 route as async to get file path
@@ -114,7 +114,7 @@ if (req.user.accessLevel === 2){
 
     //after image in S3 bucket delete the file
     fs.unlink(req.file.path,()=>{
-        console.log('file deleted');
+        //console.log('file deleted');
     });
     //send photo info to suneditor
     const response = {
@@ -135,8 +135,8 @@ else{
 
 router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), async (req, res) => {
     // POST route code here
-    // console.log('in assignment Post route! YAY, req.file:', req.file, 'req.body', req.body);
-    // console.log('req.body', req.body);
+    // //console.log('in assignment Post route! YAY, req.file:', req.file, 'req.body', req.body);
+    // //console.log('req.body', req.body);
     let data=req.body;
     if(req.user.accessLevel === 2){
         //call s3 route as async to get file path
@@ -153,7 +153,7 @@ router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), async 
 
             //after image in S3 bucket delete the file
             fs.unlink(req.file.path,()=>{
-                console.log('file deleted');
+                //console.log('file deleted');
             });
 
             sqlText = `
@@ -199,7 +199,7 @@ router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), async 
                 res.sendStatus(201)
             })
             .catch(err=>{
-                console.error('in POST assignment error', err);
+                //console.error('in POST assignment error', err);
                 res.sendStatus(500);
             })
     }
@@ -208,7 +208,7 @@ router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), async 
     }});
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    // console.log('in delete assignment with id of', req.params);
+    // //console.log('in delete assignment with id of', req.params);
     //set query text
 
     if(req.user.accessLevel === 2){
@@ -222,7 +222,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(200);
         })
         .catch(err => {
-            console.error('in delete assignment error', err);
+            //console.error('in delete assignment error', err);
             res.sendStatus(500);
         });
     }
@@ -233,7 +233,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 })
 
  router.put('/', rejectUnauthenticated, upload.single('media'), async (req, res) => {
-    // console.log('in assignmentsPut route with payload of:', req.body, req.file);
+    // //console.log('in assignmentsPut route with payload of:', req.body, req.file);
     //insure route only available to Admin users
     if (req.user.accessLevel === 2){
         let data=req.body;
@@ -249,7 +249,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
             //after image in S3 bucket delete the file
             fs.unlink(req.file.path,()=>{
-                console.log('file deleted');
+                //console.log('file deleted');
             });
         }
         //set SQL text
@@ -285,7 +285,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
                 res.sendStatus(201);
             })
             .catch( err => {
-                console.error('in assignment PUT route error:', err);
+                //console.error('in assignment PUT route error:', err);
                 res.sendStatus(500);
             })
     }
@@ -302,7 +302,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 // GET ASSIGNMENTS BY SERIES
 router.get('/series/:seriesId', rejectUnauthenticated, (req, res) => {
-    console.log('in GET assignment by series:', req.params.seriesId);
+    //console.log('in GET assignment by series:', req.params.seriesId);
     
     const sqlText=`
     SELECT "assignments".id, "assignments"."name", "assignments".community, "assignments".content, "assignments"."createdDate", "assignments".feedback, "assignments".file, "assignments".media, "assignments"."postClass", "assignments"."textField", "assignments".video,"assignments"."moduleId", "modules"."seriesId"
@@ -315,7 +315,7 @@ router.get('/series/:seriesId', rejectUnauthenticated, (req, res) => {
             res.send(dbRes.rows);
         })
         .catch(err => {
-            console.error('in GET assignments by series', err);
+            //console.error('in GET assignments by series', err);
             res.sendStatus(500);
         })
 
@@ -325,7 +325,7 @@ router.get('/series/:seriesId', rejectUnauthenticated, (req, res) => {
 //GET assignments for single student by username
 router.get('/username/:username', rejectUnauthenticated, async (req, res) => {
     try{
-        console.log('in GET assignments by USERNAME ', req.params.username);
+        //console.log('in GET assignments by USERNAME ', req.params.username);
         const sqlText = `
         SELECT "user".id as "userId", "user".username, "submissions".id as "submissionId", "submissions"."assignmentId", "submissions".completed, "submissions".file, "submissions"."textInput", "submissions".video, "submissions"."submissionDate", "assignments"."name" as "assignmentName"
         FROM "user" 
@@ -335,12 +335,12 @@ router.get('/username/:username', rejectUnauthenticated, async (req, res) => {
 
         `;
         const sqlParams = [req.params.username];
-        console.log('🎋SQL PARAMS ', sqlParams);
+        //console.log('🎋SQL PARAMS ', sqlParams);
         let dbResult = await pool.query(sqlText, sqlParams);
         res.send(dbResult.rows);
         
     } catch(err) {
-        console.error('assignments.router /:username error ', err.message);
+        //console.error('assignments.router /:username error ', err.message);
         res.sendStatus(500);
     }
     

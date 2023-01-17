@@ -36,13 +36,13 @@ router.put('/', rejectUnauthenticated, async (req,res) => {
             req.body.about,
         req.body.id];
 
-        console.log('🥤sqlParams are ', sqlParams);
+        //console.log('🥤sqlParams are ', sqlParams);
 
         await pool.query(sqlText, sqlParams);
         res.sendStatus(201)
 
     } catch(err) {
-        console.error('series.router POST publish error', err.message);
+        //console.error('series.router POST publish error', err.message);
     }
 })
 

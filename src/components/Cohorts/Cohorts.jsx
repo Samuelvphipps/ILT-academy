@@ -49,11 +49,11 @@ function Cohorts() {
         })
     }, [])
 
-    // console.log('cohorts is ', cohorts);
+    // //console.log('cohorts is ', cohorts);
 
     const createCohort = (evt) => {
         evt.preventDefault();
-        // console.log('in createCohort');
+        // //console.log('in createCohort');
         dispatch({
             type: 'CREATE_COHORT',
             payload:{

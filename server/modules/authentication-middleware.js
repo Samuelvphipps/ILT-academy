@@ -14,7 +14,7 @@ const rejectUnauthenticated = (req, res, next) => {
 
 //will reject requests made by users without admin level clearance
 const rejectNotAdmin = (req, res, next) => {
-  console.log('IN REJECTNOTADMIN req.user.accessLevel is ', req.user.accessLevel);
+  //console.log('IN REJECTNOTADMIN req.user.accessLevel is ', req.user.accessLevel);
   if (req.user.accessLevel >= 2){
     next();
   } else {

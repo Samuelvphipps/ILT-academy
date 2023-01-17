@@ -2,39 +2,39 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchModules(action) {
-    // console.log(`🔴 action.payload is `, action.payload); //action.payload is series id
+    // //console.log(`🔴 action.payload is `, action.payload); //action.payload is series id
     try{
         let modules =  yield axios.get(`api/modules/${action.payload}`) //get modules from database
-         console.log('feature GET response', modules)
+         //console.log('feature GET response', modules)
  
          yield put({
              type: 'SET_MODULES', //dispatch to modules.reducer
              payload: modules.data
          })
      } catch{
-         console.log('error in modulesSaga')
+         //console.log('error in modulesSaga')
      }
 }
 
 function* fetchCohortModules(action) {
-    console.log(`🔴 action.payload is `, action.payload); //action.payload is module id
+    //console.log(`🔴 action.payload is `, action.payload); //action.payload is module id
     let cohortId = action.payload.cohortId;
     let seriesId = action.payload.seriesId;
     try{
         let cohortModules =  yield axios.get(`api/modules/cohort/${cohortId}/${seriesId}`) //get modules from database
-         console.log('feature GET response', cohortModules)
+         //console.log('feature GET response', cohortModules)
  
          yield put({
              type: 'SET_COHORT_MODULES', //dispatch to modules.reducer
              payload: cohortModules.data
          })
      } catch{
-         console.log('error in modulesSaga fetchCohortModules')
+         //console.log('error in modulesSaga fetchCohortModules')
      }
 }
 
 function* publishCohortModule(action) {
-    console.log(`🍍 action.payload is `, action.payload);
+    //console.log(`🍍 action.payload is `, action.payload);
     let cohortId = action.payload.cohortId;
     let moduleId = action.payload.moduleId;
     let seriesId = action.payload.seriesId;
@@ -61,13 +61,13 @@ function* publishCohortModule(action) {
 
 
     } catch{
-        console.log('error in modules.sage publishCohortModule')
+        //console.log('error in modules.sage publishCohortModule')
     }
 }
 
 //make a new module
 function* createModule(action) {
-    // console.log('in createModule SAGA', action.payload);
+    // //console.log('in createModule SAGA', action.payload);
 
     try{
         //send new module to server
@@ -80,13 +80,13 @@ function* createModule(action) {
         });
 
     } catch (err) {
-        console.error('in createModule SAGA error:', err.message);
+        //console.error('in createModule SAGA error:', err.message);
     }
 
 }
 
 function* deleteModule(action) {
-    // console.log('in deleteModule SAGA with payload of:', action.payload);
+    // //console.log('in deleteModule SAGA with payload of:', action.payload);
     try{
         //axios.delete to server
         yield axios.delete(`/api/modules/${action.payload.id}`);
@@ -98,7 +98,7 @@ function* deleteModule(action) {
         });
         
     } catch (err){
-        console.error('error in deleteModule SAGA:', err.message)
+        //console.error('error in deleteModule SAGA:', err.message)
     }
 }
 

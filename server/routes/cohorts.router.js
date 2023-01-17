@@ -14,7 +14,7 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.error('cohorts.router GET error', err.message);
+        //console.error('cohorts.router GET error', err.message);
         res.sendStatus(500);
     }
 })
@@ -29,13 +29,13 @@ router.get('/:cohortId', rejectUnauthenticated, async (req, res) => {
         `;
 
         const sqlParams = req.params.cohortId
-        console.log('sqlParams in cohort router are 💖', sqlParams);
+        //console.log('sqlParams in cohort router are 💖', sqlParams);
 
         let dbResult = await pool.query(sqlText,[sqlParams]);
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.error('cohorts.router GET error', err.message);
+        //console.error('cohorts.router GET error', err.message);
         res.sendStatus(500);
     }
 })
@@ -51,10 +51,10 @@ router.get('/name/:cohortId', rejectUnauthenticated, async (req, res) => {
 
         let dbResult = await pool.query(sqlText, sqlParams);
         res.send(dbResult.rows);
-        console.log('COHORT NAME INFO ', dbResult.rows[0]);
+        //console.log('COHORT NAME INFO ', dbResult.rows[0]);
 
     } catch(err) {
-        console.error('cohorts.router GET error', err.message);
+        //console.error('cohorts.router GET error', err.message);
         res.sendStatus(500);
     }
 
@@ -64,7 +64,7 @@ router.get('/name/:cohortId', rejectUnauthenticated, async (req, res) => {
 
 
 router.post('/', rejectUnauthenticated, async(req, res) => {
-    // console.log('in Cohorts POST route', req.body);
+    // //console.log('in Cohorts POST route', req.body);
 
     try {
         //sql text for query
@@ -87,7 +87,7 @@ router.post('/', rejectUnauthenticated, async(req, res) => {
         } 
         else{
             res.sendStatus(500);
-            console.error('in POST cohort route error', err);
+            //console.error('in POST cohort route error', err);
         }    
     }
 })
@@ -95,7 +95,7 @@ router.post('/', rejectUnauthenticated, async(req, res) => {
 
 //delete === graduate the cohort
 router.delete('/:id', rejectUnauthenticated, async(req, res) => {
-    // console.log('in delete/graduate cohort', req.params.id);
+    // //console.log('in delete/graduate cohort', req.params.id);
 
     try{
         //sql query setup
@@ -108,7 +108,7 @@ router.delete('/:id', rejectUnauthenticated, async(req, res) => {
         //send status OK
         res.sendStatus(200);
     } catch (err){
-        console.error('in graduate/DELETE cohort err', err.message);
+        //console.error('in graduate/DELETE cohort err', err.message);
         //send status of server error
         res.sendStatus(500);
     }

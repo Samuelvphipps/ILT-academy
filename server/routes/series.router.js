@@ -14,14 +14,14 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.error('series.router GET error', err.message);
+        //console.error('series.router GET error', err.message);
         res.sendStatus(500);
     }
 })
 
 router.get('/:cohortId', rejectUnauthenticated, async (req, res) => {
     //GET all series assigned to cohort 
-    // console.log('SERIES ROUTER GET cohort id ', req.params.cohortId)
+    // //console.log('SERIES ROUTER GET cohort id ', req.params.cohortId)
     try{
         const sqlText = `
         SELECT * FROM "cohorts"
@@ -32,13 +32,13 @@ router.get('/:cohortId', rejectUnauthenticated, async (req, res) => {
       	WHERE "cohorts".id = $1
         ;`;
         const sqlParams = req.params.cohortId
-        // console.log('req.user.cohortId is ', req.params.cohortId);
+        // //console.log('req.user.cohortId is ', req.params.cohortId);
         let dbResult = await pool.query(sqlText,[sqlParams]);
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.log('req', req.params.cohortId)
-        console.error('series.router GET error this one', err.message);
+        //console.log('req', req.params.cohortId)
+        //console.error('series.router GET error this one', err.message);
         res.sendStatus(500);
     }
 })
@@ -50,12 +50,12 @@ router.post('/publish/:cohort/:series', rejectUnauthenticated, async (req,res) =
         VALUES ($1, $2);
         `;
         const sqlParams = [req.params.cohort, req.params.series]
-        console.log('🥤sqlParams are ', sqlParams);
+        //console.log('🥤sqlParams are ', sqlParams);
         await pool.query(sqlText, sqlParams);
         res.sendStatus(201)
 
     } catch(err) {
-        console.error('series.router POST publish error', err.message);
+        //console.error('series.router POST publish error', err.message);
     }
 })
 

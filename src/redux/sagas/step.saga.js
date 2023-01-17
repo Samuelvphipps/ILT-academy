@@ -3,11 +3,11 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 
 function* editCurrentStep(action) {
-    console.log('CURRENT STEP', action.payload)
+    //console.log('CURRENT STEP', action.payload)
 
     try {
 
-        console.log('IN FETCH ORIENTATION STEP')
+        //console.log('IN FETCH ORIENTATION STEP')
         yield axios.put(`api/orientation/step`, action.payload) //update orientation stepper from database
 
         const user = yield axios.get(`api/orientation/step/${action.payload.id}`);
@@ -15,7 +15,7 @@ function* editCurrentStep(action) {
         yield put({ type: 'SET_USER', payload: user.data });
 
     } catch {
-        console.log('error in orientationSaga')
+        //console.log('error in orientationSaga')
     }
 }
 

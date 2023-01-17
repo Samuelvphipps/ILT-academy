@@ -19,7 +19,7 @@ router.get('/:seriesId', rejectUnauthenticated, async (req, res) => {
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.error('modules.router GET error', err.message);
+        //console.error('modules.router GET error', err.message);
         res.sendStatus(500);
     }
 })
@@ -35,13 +35,13 @@ router.get('/cohort/:cohortId/:seriesId', rejectUnauthenticated, async (req, res
             GROUP BY "cohorts_modules_join_id";
             `;
         const sqlParams = [req.params.cohortId, req.params.seriesId];
-        console.log('get cohort modules params  ', sqlParams);
+        //console.log('get cohort modules params  ', sqlParams);
 
         let dbResult = await pool.query(sqlText, sqlParams);
         res.send(dbResult.rows);
 
     } catch(err) {
-        console.error('modules.router GET error', err.message);
+        //console.error('modules.router GET error', err.message);
         res.sendStatus(500);
     }
 })
@@ -53,17 +53,17 @@ router.post('/publish/:cohortId/:moduleId', rejectUnauthenticated, async (req, r
         VALUES($1, $2);
         `;
         const sqlParams = [req.params.cohortId, req.params.moduleId]
-        console.log('🎅 module post sqlParams are', sqlParams);
+        //console.log('🎅 module post sqlParams are', sqlParams);
         await pool.query(sqlText, sqlParams);
         res.sendStatus(201);
     } catch(err) {
-        console.error('modules.router POST publish error ', err.message);
+        //console.error('modules.router POST publish error ', err.message);
     }
 })
 
 //POST new module route
 router.post('/', rejectUnauthenticated, async (req, res) => {
-    // console.log('in POST new module with:', req.body);
+    // //console.log('in POST new module with:', req.body);
 
     try{
         //inserting into the modules table to create a new module
@@ -81,14 +81,14 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
         res.sendStatus(201);
 
     } catch (err) {
-        console.error('in POST new module route error', err);
+        //console.error('in POST new module route error', err);
         res.sendStatus(500);
     }
 })
 
 
 router.delete('/:id', rejectUnauthenticated, async (req, res) => {
-    console.log('in Modules DELETE rte with id of:', req.params.id);
+    //console.log('in Modules DELETE rte with id of:', req.params.id);
 
     //query time
     try{
@@ -101,7 +101,7 @@ router.delete('/:id', rejectUnauthenticated, async (req, res) => {
         res.sendStatus(200);
 
     } catch (err) {
-        console.error('error in modules DELETE rte', err.message)
+        //console.error('error in modules DELETE rte', err.message)
         res.sendStatus(500);
     }
 

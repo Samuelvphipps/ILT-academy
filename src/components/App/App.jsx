@@ -227,7 +227,7 @@ function App() {
                             // logged in admin can edit assignment
                             exact
                             // onLeave={
-                            //     console.error('PAGE LEAVE')                     
+                            //     //console.error('PAGE LEAVE')                     
                             //     // dispatch({
                             //     //     type: 'SET_EDIT_ASSIGNMENT',
                             //     //     payload: {}

@@ -68,7 +68,7 @@ function CohortDetails() {
 
     // assign series to cohort
     function publish(seriesId) {
-        // console.log('PUBLISH')
+        // //console.log('PUBLISH')
         dispatch({
             type: 'PUBLISH_SERIES',
             payload: {
@@ -82,7 +82,7 @@ function CohortDetails() {
     const rows = [];
 
     students.map(student => {
-        console.log('student is ', student);
+        //console.log('student is ', student);
         let studentObject = {
             id: student.id,
             firstName: student.firstName,
@@ -146,7 +146,7 @@ function CohortDetails() {
     };
 
     function handleClick(params){
-        console.log('CLICKETY CLICK params.row', params.row);
+        //console.log('CLICKETY CLICK params.row', params.row);
         let username = params.row.username
         let cohortId = params.row.cohortId
         history.push(`/profile/${username}/${cohortId}`)

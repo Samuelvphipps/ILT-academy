@@ -55,7 +55,7 @@ function EditAssignment() {
 
     const submitEditAssignment = (evt) => {
         evt.preventDefault();
-        // console.log('in submit edit assignment');
+        // //console.log('in submit edit assignment');
         //ensure there is content in the WYSIWYG
         if (editAssignment.content.length <= 10) {
             alert('Must put content into the assignment');
@@ -92,7 +92,7 @@ function EditAssignment() {
 
     const handleImageUploadBefore = (files, info, uploadHandler) => {
         // uploadHandler is a function
-        // console.log(files, info)
+        // //console.log(files, info)
 
         const callBack = async () => {
             let formData = new FormData();
@@ -103,7 +103,7 @@ function EditAssignment() {
                     headers: { "Content-Type": "multipart/form-data" },
                 }
             });
-            console.log('response', response.data);
+            //console.log('response', response.data);
             uploadHandler(response.data);
         }
 
@@ -122,9 +122,9 @@ function EditAssignment() {
     }
 
     //testing logs
-    // console.log('submission types, textfield:', textField, 'fileSubmission', fileSubmission);
-    // console.log('pre class should be false:', postClass);
-    // console.log('video submission', videoSubmission);
+    // //console.log('submission types, textfield:', textField, 'fileSubmission', fileSubmission);
+    // //console.log('pre class should be false:', postClass);
+    // //console.log('video submission', videoSubmission);
     return (
         <>
             <ThemeProvider theme={PrimaryMainTheme}>
@@ -387,7 +387,7 @@ export default EditAssignment;
 //----------reference code----------------------------------------------------------------------
 //old post dispatch for reference//
 
-// console.log(user.accessLevel)
+// //console.log(user.accessLevel)
 // // import useState and create state for selected file on video upload
 // const [assignmentVideo, setAssignmentVideo] = useState('');
 // //use usestate to track content of WYSIWYG

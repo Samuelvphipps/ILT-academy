@@ -4,52 +4,52 @@ import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 function* fetchCohorts() {
     try{
         let cohorts =  yield axios.get('api/cohorts') //get cohorts from database
-         console.log('feature GET response', cohorts)
+         //console.log('feature GET response', cohorts)
  
          yield put({
              type: 'SET_COHORTS', //dispatch to cohorts.reducer
              payload: cohorts.data
          })
      } catch{
-         console.log('error in cohortsSaga')
+         //console.log('error in cohortsSaga')
      }
 }
 
 function* fetchCohortStudents(action){
-    console.log('🚗 action.payload in cohorts.saga ', action.payload)
+    //console.log('🚗 action.payload in cohorts.saga ', action.payload)
     try{
         let cohortStudents = yield axios.get(`api/cohorts/${action.payload}`) //get students and cohort info from specific cohort
-            console.log('cohort students in cohorts.saga are ', cohortStudents)
+            //console.log('cohort students in cohorts.saga are ', cohortStudents)
         yield put({
             type: 'SET_COHORT_STUDENTS',
             payload: cohortStudents.data
         })
     } catch (err){
-        console.log('error in cohort.saga', err.message)
+        //console.log('error in cohort.saga', err.message)
     }
 }
 
 function* fetchCohort(action) {
     try{
         const cohortData = yield axios.get(`api/cohorts/name/${action.payload}`)
-            console.log('get cohort info by cohort ID', cohortData.data[0]);
+            //console.log('get cohort info by cohort ID', cohortData.data[0]);
         yield put({
             type: 'SET_COHORT', 
             payload: cohortData.data[0]
         })
     } catch{
-        console.log('error in cohort.saga fetch cohort name')
+        //console.log('error in cohort.saga fetch cohort name')
     }
 }
 
 function* createCohort(action){
-    // console.log('in createCohort SAGA')
+    // //console.log('in createCohort SAGA')
 
     try{
         //axios to server
         const response = yield axios.post('/api/cohorts', action.payload);
         //reGET cohorts
-        console.log('response:', response);
+        //console.log('response:', response);
         yield put({
             type: 'FETCH_COHORTS'
         });
@@ -58,14 +58,14 @@ function* createCohort(action){
         }
 
     } catch (err){
-        console.error('in createCohort SAGA error:', err.message);
+        //console.error('in createCohort SAGA error:', err.message);
     }
 
 }
 //GRADUATE THE COHORT ===delete the cohort assignment
 //turns assigned cohort for the student to 'null'
 function* graduateCohort(action){
-    // console.log('in graduateCohort with id', action.payload);
+    // //console.log('in graduateCohort with id', action.payload);
 
     try{
         //dispatch axios.delete to server for DB deletion
@@ -77,7 +77,7 @@ function* graduateCohort(action){
         });
         
     } catch (err){
-        console.error('in graduateCohort SAGA error', err.message);
+        //console.error('in graduateCohort SAGA error', err.message);
     }
 }
 

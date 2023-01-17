@@ -20,7 +20,7 @@ function CohortSubmissions() {
     const cohortStudents = useSelector(store => store.cohortStudents)
 
 
-    // console.log('cohortInfo is', cohortInfo);
+    // //console.log('cohortInfo is', cohortInfo);
 
     useEffect(() => {
         dispatch({
@@ -42,7 +42,7 @@ function CohortSubmissions() {
           type:'FETCH_COHORT_STUDENTS',
           payload: params.cohortId
         })
-        console.log('params.cohortId is ', params.cohortId);
+        //console.log('params.cohortId is ', params.cohortId);
     },[params.cohortId, params.assignmentId])
 
     const columns = [
@@ -109,27 +109,27 @@ function CohortSubmissions() {
         }
         
       })
-      console.log('submittedStudents ', submittedStudents)
+      //console.log('submittedStudents ', submittedStudents)
      })
 
      //check cohortStudents against submittedStudents 
      let missingStudents = [];
      cohortStudents.map(student => {
       if(!submittedStudents.includes(student.id)){
-        // console.log('NOT INCLUDED ', student.firstName)
+        // //console.log('NOT INCLUDED ', student.firstName)
         missingStudents.push(student)
       }
-      console.log('missingStudents are ', missingStudents);
+      //console.log('missingStudents are ', missingStudents);
      })
     
 
 
 
-      console.log('cohort students is ', cohortStudents);
+      //console.log('cohort students is ', cohortStudents);
       //map through submissions and add to DataGrid rows array
       submissions.map(submission => {
 
-          console.log('submission is ', submission)
+          //console.log('submission is ', submission)
           if(submission.assignmentId == params.assignmentId ){
             let studentSubmission =  {
                 id: submission.studentId,

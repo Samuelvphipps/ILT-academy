@@ -38,7 +38,7 @@ function CreateAssignment() {
     const params = useParams();
     const history = useHistory();
 
-    // console.log(user.accessLevel)
+    // //console.log(user.accessLevel)
     // import useState and create state for selected file on video upload
     const [assignmentVideo, setAssignmentVideo] = useState('');
     //use usestate to track content of WYSIWYG
@@ -55,7 +55,7 @@ function CreateAssignment() {
 
     const submitAssignment = (evt) => {
         evt.preventDefault();
-        console.log('in submit assignment');
+        //console.log('in submit assignment');
         //ensure there is content in the WYSIWYG
         if (assignmentContent.length <= 10) {
             alert('Must put content into the assignment');
@@ -90,12 +90,12 @@ function CreateAssignment() {
     }
 
 
-    // console.log('assignmentcontent', assignmentContent);
+    // //console.log('assignmentcontent', assignmentContent);
 
 
     const handleImageUploadBefore = (files, info, uploadHandler) => {
         // uploadHandler is a function
-        // console.log(files, info)
+        // //console.log(files, info)
 
         const callBack = async () => {
             let formData = new FormData();
@@ -106,7 +106,7 @@ function CreateAssignment() {
                     headers: { "Content-Type": "multipart/form-data" },
                 }
             });
-            console.log('response', response.data);
+            //console.log('response', response.data);
             uploadHandler(response.data);
         }
 
@@ -125,9 +125,9 @@ function CreateAssignment() {
     }
 
     //testing logs
-    console.log('submission types, textfield:', textField, 'fileSubmission', fileSubmission, 'video', videoSubmission);
-    // console.log('pre class should be false:', postClass);
-    // console.log('video submission', videoSubmission);
+    //console.log('submission types, textfield:', textField, 'fileSubmission', fileSubmission, 'video', videoSubmission);
+    // //console.log('pre class should be false:', postClass);
+    // //console.log('video submission', videoSubmission);
     return (
         <>
             <ThemeProvider theme={PrimaryMainTheme}>
@@ -327,7 +327,7 @@ export default CreateAssignment
 //         video.play();
 //       })
 //       .catch(err => {
-//         console.error("error:", err);
+//         //console.error("error:", err);
 //       });
 //   };
 

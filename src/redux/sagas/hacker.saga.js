@@ -9,7 +9,7 @@ function* createHipster(action) {
         //get posts redux and rerender after store is updated
     } catch (err){
         //error route tested
-        console.error('in createAssignment SAGA error', err);
+        //console.error('in createAssignment SAGA error', err);
     }    
 }
 

@@ -61,7 +61,7 @@ function OrientationEdit() {
 
     const submitEditAssignment = (evt) => {
         evt.preventDefault();
-        // console.log('in submit edit assignment');
+        // //console.log('in submit edit assignment');
         //ensure there is content in the WYSIWYG
         if (editOrientation.content.length <= 10) {
             alert('Must put content into the assignment');
@@ -97,7 +97,7 @@ function OrientationEdit() {
 
     const handleImageUploadBefore = (files, info, uploadHandler) => {
         // uploadHandler is a function
-        // console.log(files, info)
+        // //console.log(files, info)
 
         const callBack = async () => {
             let formData = new FormData();
@@ -108,7 +108,7 @@ function OrientationEdit() {
                     headers: { "Content-Type": "multipart/form-data" },
                 }
             });
-            console.log('response', response.data);
+            //console.log('response', response.data);
             uploadHandler(response.data);
         }
 

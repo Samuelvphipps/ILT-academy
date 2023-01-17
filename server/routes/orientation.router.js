@@ -35,13 +35,13 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
         res.send(dbResult.rows);
 
     } catch (err) {
-        console.error('orientation.router GET error', err.message);
+        //console.error('orientation.router GET error', err.message);
         res.sendStatus(500);
     }
 });
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    // console.log('in GET assignment by ID route with payload of:', req.params.id);
+    // //console.log('in GET assignment by ID route with payload of:', req.params.id);
     
     //create sqlText for db query
     const sqlText=`
@@ -51,11 +51,11 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     //query DB
     pool.query(sqlText, [req.params.id])
         .then(dbRes => {
-            // console.log('dbRes.rows', dbRes.rows[0]);
+            // //console.log('dbRes.rows', dbRes.rows[0]);
             res.send(dbRes.rows[0]);
         })
         .catch(err => {
-            console.error('in GET assignment by ID error:', err);
+            //console.error('in GET assignment by ID error:', err);
             res.sendStatus(500);
         })
 
@@ -64,7 +64,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 router.post('/imagefield',  rejectUnauthenticated, upload.single('image'), async (req,res) => {
 
-    // console.log('in /imagefield', req.file);
+    // //console.log('in /imagefield', req.file);
     //ensure that this route is only available for admin users
     if (req.user.accessLevel === 2){
             //call s3 route as async to get file path
@@ -72,7 +72,7 @@ router.post('/imagefield',  rejectUnauthenticated, upload.single('image'), async
     
         //after image in S3 bucket delete the file
         fs.unlink(req.file.path,()=>{
-            console.log('file deleted');
+            //console.log('file deleted');
         });
         //send photo info to suneditor
         const response = {
@@ -93,8 +93,8 @@ router.post('/imagefield',  rejectUnauthenticated, upload.single('image'), async
 
 router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), (req, res) => {
     // POST route code here
-    // console.log('in assignment Post route! YAY, req.file:', req.file, 'req.body', req.body);
-    console.log('req.body', req.body);
+    // //console.log('in assignment Post route! YAY, req.file:', req.file, 'req.body', req.body);
+    //console.log('req.body', req.body);
     let data = req.body;
     if (req.user.accessLevel === 2) {
         //sql text for the insert
@@ -138,7 +138,7 @@ router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), (req, 
                 res.sendStatus(201)
             })
             .catch(err => {
-                console.error('in POST assignment error', err);
+                //console.error('in POST assignment error', err);
                 res.sendStatus(500);
             })
     }
@@ -149,7 +149,7 @@ router.post('/', rejectUnauthenticated, upload.single('assignmentVideo'), (req, 
 });
 
 router.put('/', rejectUnauthenticated, upload.single('media'), async (req, res) => {
-    console.log('in orientationPut route with payload of:', req.body, req.file);
+    //console.log('in orientationPut route with payload of:', req.body, req.file);
     //insure route only available to Admin users
     if (req.user.accessLevel === 2){
         let data=req.body;
@@ -165,7 +165,7 @@ router.put('/', rejectUnauthenticated, upload.single('media'), async (req, res) 
 
             //after image in S3 bucket delete the file
             fs.unlink(req.file.path,()=>{
-                console.log('file deleted');
+                //console.log('file deleted');
             });
         }
         //set SQL text
@@ -197,7 +197,7 @@ router.put('/', rejectUnauthenticated, upload.single('media'), async (req, res) 
                 res.sendStatus(201);
             })
             .catch( err => {
-                console.error('in assignment PUT route error:', err);
+                //console.error('in assignment PUT route error:', err);
                 res.sendStatus(500);
             })
     }
@@ -208,7 +208,7 @@ router.put('/', rejectUnauthenticated, upload.single('media'), async (req, res) 
 })
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    // console.log('in delete assignment with id of', req.params);
+    // //console.log('in delete assignment with id of', req.params);
     //set query text
 
     if(req.user.accessLevel === 2){
@@ -222,7 +222,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(200);
         })
         .catch(err => {
-            console.error('in delete assignment error', err);
+            //console.error('in delete assignment error', err);
             res.sendStatus(500);
         });
     }

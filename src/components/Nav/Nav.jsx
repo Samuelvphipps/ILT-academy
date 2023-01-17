@@ -10,7 +10,7 @@ function Nav() {
     const publishedSeries = useSelector((store) => store.cohortSeries)
     const orientationList = useSelector((store) => store.orientation.orientationReducer);
     const dispatch = useDispatch();
-    // console.log('publishedSeries', publishedSeries, 'cohortId:', user);
+    // //console.log('publishedSeries', publishedSeries, 'cohortId:', user);
 
 
 

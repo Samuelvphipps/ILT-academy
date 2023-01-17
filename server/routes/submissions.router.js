@@ -38,11 +38,11 @@ router.get('/user/assignments/:assignmentId', (req, res) => {
  * POST route template
  */
 router.post('/', rejectUnauthenticated, upload.single('file'), async (req, res) => {
-    console.log('req.body', req.body);
+    //console.log('req.body', req.body);
    
     
     let sub=req.body;
-//  console.log('req.files', req.files);
+//  //console.log('req.files', req.files);
     //set up all variables for submissions
     let video;
     let file;
@@ -57,7 +57,7 @@ router.post('/', rejectUnauthenticated, upload.single('file'), async (req, res) 
 
     //after image in S3 bucket delete the file
     fs.unlink(req.file.path,()=>{
-        console.log('file deleted');
+        //console.log('file deleted');
     });
     }
     else{file=null};
@@ -109,7 +109,7 @@ router.post('/', rejectUnauthenticated, upload.single('file'), async (req, res) 
             res.sendStatus(201);
         })
         .catch(err=>{
-            console.error('in submission post route error:', err);
+            //console.error('in submission post route error:', err);
             res.sendStatus(500);
         });
 });
@@ -126,11 +126,11 @@ router.get('/:cohortId/:assignmentId', rejectUnauthenticated, async (req, res) =
         WHERE "user"."cohortId" = $1 AND "submissions"."assignmentId" = $2 ;
         `;
         const sqlParams = [req.params.cohortId, req.params.assignmentId]
-        // console.log('sqlParams for submissions GET are ', sqlParams);
+        // //console.log('sqlParams for submissions GET are ', sqlParams);
         let dbResult = await pool.query(sqlText, sqlParams);
         res.send(dbResult.rows);
     } catch(err) {
-        console.error('submissions.router GET error ', err.message);
+        //console.error('submissions.router GET error ', err.message);
         res.sendStatus(500);
     }
 })
@@ -140,7 +140,7 @@ GET by userid route
 */
 //get all assignments for the logged in user
 router.get('/user', rejectUnauthenticated, async (req, res) => {
-    // console.log('inside get by userid assignment submissions');
+    // //console.log('inside get by userid assignment submissions');
 
     //setup query
     let sqlText = `
@@ -154,7 +154,7 @@ router.get('/user', rejectUnauthenticated, async (req, res) => {
         //send to client
         res.send(dbRes.rows);
     } catch (err){
-        console.error('in submissions GET by userid error', err.message);
+        //console.error('in submissions GET by userid error', err.message);
         res.sendStatus(500);
     }
 })
@@ -164,7 +164,7 @@ router.get('/user', rejectUnauthenticated, async (req, res) => {
  Get single submission for this one assignment
  */
 router.get('/user/assignment/:assignmentId', rejectUnauthenticated, async (req, res) => {
-    // console.log('in GET single submission by user and assignmentID with id of', req.params.assignmentId);
+    // //console.log('in GET single submission by user and assignmentID with id of', req.params.assignmentId);
     //get the assignment info for the selected assignment where this user submitted it
     const sqlText=`
     SELECT * FROM "submissions"
@@ -175,7 +175,7 @@ router.get('/user/assignment/:assignmentId', rejectUnauthenticated, async (req, 
         const dbRes = await pool.query(sqlText, [req.user.id, req.params.assignmentId])
         res.send(dbRes.rows[0]);
     } catch (err) {
-        console.log('error in get single submission', err);
+        //console.log('error in get single submission', err);
         res.sendStatus(500);
     }
   });
@@ -197,7 +197,7 @@ module.exports = router;
 
 //if we need to use file upload again use upload.any() and 
     //seperate files and assign to associated variable (video or file)
-    // console.log('reqfile,', req.file);
+    // //console.log('reqfile,', req.file);
     // for (let i=0; i<req.files.length; i++){
     // //check if the file at index i is the pdf file or the video file (need this to assign to db)
     // if(req.files[i].fieldname === 'file'){
@@ -213,7 +213,7 @@ module.exports = router;
 
 
 //end for loop
-//  console.log('file', file, 'video', video);
+//  //console.log('file', file, 'video', video);
     //Big darn conditional :( There has to be a better way to do this, I just dont know how right now
     //check what submission types exist to build query text and params
 //case file, video, text

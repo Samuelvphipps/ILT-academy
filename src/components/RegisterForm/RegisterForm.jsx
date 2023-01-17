@@ -32,7 +32,7 @@ function RegisterForm() {
     }; // end registerUser
 
     //accessCode test log
-    // console.log('accessCode', accessCode);
+    // //console.log('accessCode', accessCode);
 
     return (
     <ThemeProvider theme={PrimaryMainTheme}>

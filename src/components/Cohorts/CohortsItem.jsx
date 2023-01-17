@@ -19,11 +19,11 @@ function CohortsItem({cohort}) {
          })
      }, [])
  
-     // console.log('cohorts is ', cohorts);
+     // //console.log('cohorts is ', cohorts);
  
     
      const graduateCohort = (cohortId) => {
-         // console.log('in deleteCohort', cohortId);
+         // //console.log('in deleteCohort', cohortId);
          //confirm deletion
          Swal.fire({
              title: 'Are you sure you want to graduate this cohort?',
