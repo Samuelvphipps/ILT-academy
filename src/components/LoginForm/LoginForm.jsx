@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material';
 import { PrimaryMainTheme } from '../PrimaryMainTheme/PrimaryMainTheme';
 import { Button } from '@mui/material';
@@ -11,6 +11,20 @@ function LoginForm() {
     const [password, setPassword] = useState('');
     const errors = useSelector(store => store.errors);
     const dispatch = useDispatch();
+    const history = useHistory();
+
+
+    //regitration for orientation demo
+    const register = () => {
+        dispatch({
+            type: 'REGISTER',
+            payload: {
+            username: `NewStudent${Math.floor(Math.random() * 10000)}`,
+            password: 'password',
+            accessCode: 'demoCohort',
+            },
+        });
+    }
 
     const login = (event) => {
         event.preventDefault();
@@ -56,6 +70,16 @@ function LoginForm() {
                         Use demo admin info
                     </Button>
                 </div>
+                <div>
+                    <Button
+                        color='secondary'
+                        variant='contained'
+                        onClick={register}
+                        sx={{ marginBottom: '15px', marginTop: '15px' }}
+                    >
+                        Create new student and go through orientation feature!
+                    </Button>
+                </div>
                 {errors.loginMessage && (
                     <h3 className="alert" role="alert">
                         {errors.loginMessage}
@@ -88,6 +112,7 @@ function LoginForm() {
                 <div>
                     <Button type='submit' variant='contained' sx={{ marginBottom: '15px', marginTop: '15px' }}>Log In</Button>
                 </div>
+                
                 
 
             </form>
