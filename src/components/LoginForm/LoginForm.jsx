@@ -13,6 +13,19 @@ function LoginForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+
+    //regitration for orientation demo
+    const register = () => {
+        dispatch({
+            type: 'REGISTER',
+            payload: {
+            username: `NewStudent${Math.floor(Math.random() * 10000)}`,
+            password: 'password',
+            accessCode: 'demoCohort',
+            },
+        });
+    }
+
     const login = (event) => {
         event.preventDefault();
 
@@ -61,7 +74,7 @@ function LoginForm() {
                     <Button
                         color='secondary'
                         variant='contained'
-                        onClick={() => { history.push('/registration')}}
+                        onClick={register}
                         sx={{ marginBottom: '15px', marginTop: '15px' }}
                     >
                         Create new student and go through orientation feature!
