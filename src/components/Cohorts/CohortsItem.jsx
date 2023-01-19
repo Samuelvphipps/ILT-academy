@@ -80,7 +80,7 @@ function CohortsItem({cohort}) {
                     </CardContent>
                 </CardActionArea>
             {/* </Card> */}
-            <Button 
+            {/* <Button 
                     sx={{ textAlign:'right', width: 1}} 
                     variant='contained' 
                     color='btnLight'
@@ -93,7 +93,7 @@ function CohortsItem({cohort}) {
                     Graduate
                     </Typography>
                
-            </Button>
+            </Button> */}
         </Card>
     {/* </Grid2> */}
      

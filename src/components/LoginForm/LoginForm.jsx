@@ -55,7 +55,7 @@ function LoginForm() {
                         //     setUsername('studentdemo');
                         //     setPassword('studentdemo')
                         // }}
-                        onClick={
+                        onClick={ ()=>{
                             dispatch({
                                 type: 'LOGIN',
                                 payload: {
@@ -63,7 +63,7 @@ function LoginForm() {
                                     password: 'studentdemo',
                                 },
                             })
-                        }
+                        }}
                         sx={{ marginBottom: '15px', marginTop: '15px' }}
                     >
                         Use demo student info
@@ -74,7 +74,7 @@ function LoginForm() {
                         color='secondary'
                         variant='contained'
                         // onClick={() => { setUsername('admin'); setPassword('admin') }}
-                        onClick={
+                        onClick={ ()=>{
                             dispatch({
                                 type: 'LOGIN',
                                 payload: {
@@ -82,7 +82,7 @@ function LoginForm() {
                                     password: 'admin',
                                 },
                             })
-                        }
+                        }}
                         sx={{ marginBottom: '15px', marginTop: '15px' }}
                     >
                         Use demo admin info
@@ -103,7 +103,7 @@ function LoginForm() {
                         {errors.loginMessage}
                     </h3>
                 )}
-                <div>
+                {/* <div>
                     <label htmlFor="username">
                         Username:
                         <input
@@ -128,10 +128,10 @@ function LoginForm() {
                             onChange={(event) => setPassword(event.target.value)}
                         />
                     </label>
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                     <Button type='submit' variant='contained' sx={{ marginBottom: '15px', marginTop: '15px' }}>Log In</Button>
-                </div>
+                </div> */}
 
 
 
