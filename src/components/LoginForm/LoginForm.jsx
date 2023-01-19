@@ -19,9 +19,9 @@ function LoginForm() {
         dispatch({
             type: 'REGISTER',
             payload: {
-            username: `NewStudent${Math.floor(Math.random() * 10000)}`,
-            password: 'password',
-            accessCode: 'demoCohort',
+                username: `NewStudent${Math.floor(Math.random() * 10000)}`,
+                password: 'password',
+                accessCode: 'demoCohort',
             },
         });
     }
@@ -45,16 +45,25 @@ function LoginForm() {
     return (
         <ThemeProvider theme={PrimaryMainTheme}>
             <form className="formPanel" onSubmit={login}>
-                
+
                 <h2>Login</h2>
                 <div>
                     <Button
                         color='secondary'
                         variant='contained'
-                        onClick={() => {
-                            setUsername('studentdemo');
-                            setPassword('studentdemo')
-                        }}
+                        // onClick={() => {
+                        //     setUsername('studentdemo');
+                        //     setPassword('studentdemo')
+                        // }}
+                        onClick={
+                            dispatch({
+                                type: 'LOGIN',
+                                payload: {
+                                    username: 'studentdemo',
+                                    password: 'studentdemo',
+                                },
+                            })
+                        }
                         sx={{ marginBottom: '15px', marginTop: '15px' }}
                     >
                         Use demo student info
@@ -64,7 +73,16 @@ function LoginForm() {
                     <Button
                         color='secondary'
                         variant='contained'
-                        onClick={() => { setUsername('admin'); setPassword('admin') }}
+                        // onClick={() => { setUsername('admin'); setPassword('admin') }}
+                        onClick={
+                            dispatch({
+                                type: 'LOGIN',
+                                payload: {
+                                    username: 'admin',
+                                    password: 'admin',
+                                },
+                            })
+                        }
                         sx={{ marginBottom: '15px', marginTop: '15px' }}
                     >
                         Use demo admin info
@@ -89,6 +107,7 @@ function LoginForm() {
                     <label htmlFor="username">
                         Username:
                         <input
+                            disabled
                             type="text"
                             name="username"
                             required
@@ -101,6 +120,7 @@ function LoginForm() {
                     <label htmlFor="password">
                         Password:
                         <input
+                            disabled
                             type="password"
                             name="password"
                             required
@@ -112,8 +132,8 @@ function LoginForm() {
                 <div>
                     <Button type='submit' variant='contained' sx={{ marginBottom: '15px', marginTop: '15px' }}>Log In</Button>
                 </div>
-                
-                
+
+
 
             </form>
         </ThemeProvider>

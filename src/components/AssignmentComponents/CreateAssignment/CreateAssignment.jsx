@@ -92,29 +92,33 @@ function CreateAssignment() {
 
     // //console.log('assignmentcontent', assignmentContent);
 
-
+    //! handleImageUploadBefore will not run async - creates two img elements
     const handleImageUploadBefore = (files, info, uploadHandler) => {
         // uploadHandler is a function
         // //console.log(files, info)
-
+        // create async in scope to use uploadHandler fn from Suneditor to use url
+        //
         const callBack = async () => {
+            //create new formdata
             let formData = new FormData();
+            //append
             formData.append('image', files[0]);
-            const response = await axios.post('/api/assignments/imagefield', formData, {
-                //must include this header, it is what Multer uses to id file
+            //post
+            const response = await axios.post('/api/assignments/imagefield', formData, {                
                 headers: {
                     headers: { "Content-Type": "multipart/form-data" },
                 }
             });
             //console.log('response', response.data);
+            //attribute the s3URL to the img tag
             uploadHandler(response.data);
         }
-
+        //call async fn for upload
         callBack();
         // uploadHandler();
 
     }
-
+    //suneditor fn
     const handleChange = (content) => {
         setAssignmentContent(content);
     }
@@ -200,7 +204,9 @@ function CreateAssignment() {
                         <Grid2 container spacing={2}>
                             <Grid2 item sm={1}></Grid2>
                             <Grid2 item sm={10}>
+                                {/* WYSIWYG */}
                                 <SunEditor
+                                    //handle change to update state for post
                                     onChange={handleChange}
                                     setOptions={{
                                         height: 800,
@@ -219,9 +225,11 @@ function CreateAssignment() {
                                         videoFileInput: false,
                                         videoUrlInput: false,
                                         videoRatioShow: false,
+                                        //autoset video info to prevent smashed vid bug
                                         videoWidth: "603px",
                                         videoHeight: "339px",
                                     }}
+                                    //call on imageupload to generate url for html content
                                     onImageUploadBefore={handleImageUploadBefore}
                                 />
                             </Grid2>
