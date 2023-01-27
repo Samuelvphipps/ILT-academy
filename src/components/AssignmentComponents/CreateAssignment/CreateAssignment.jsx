@@ -204,7 +204,9 @@ function CreateAssignment() {
                         <Grid2 container spacing={2}>
                             <Grid2 item sm={1}></Grid2>
                             <Grid2 item sm={10}>
-                                {/* WYSIWYG */}
+                                {/* WYSIWYG 
+                                cannot refactor or the defaults break                                
+                                */}
                                 <SunEditor
                                     //handle change to update state for post
                                     onChange={handleChange}
